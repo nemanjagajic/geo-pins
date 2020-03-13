@@ -40,6 +40,7 @@ const Login = ({ classes }) => {
         onFailure={err => console.log(err)}
         clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
         isSignedIn={true}
+        buttonText={'Login with Google'}
         theme={'dark'}
       />
     </div>
