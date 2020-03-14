@@ -66,7 +66,6 @@ const CreatePin = ({ classes }) => {
 
   return (
     <form className={classes.form}>
-      { console.log({ submitting }) }
       <Typography
         className={classes.alignCenter}
         component={'h2'}
