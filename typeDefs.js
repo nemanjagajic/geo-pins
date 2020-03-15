@@ -34,11 +34,12 @@ module.exports = gql`
     longitude: Float
   }
   
-  type Mutation {
-    createPin(input: CreatePinInput!): Pin
-  }
-  
   type Query {
     me: User
+    getPins: [Pin!]
+  }
+  
+  type Mutation {
+    createPin(input: CreatePinInput!): Pin
   }
 `
