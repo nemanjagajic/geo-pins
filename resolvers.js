@@ -19,7 +19,7 @@ const authenticated = next => (root, args, ctx, info) => {
 module.exports = {
   Query: {
     me: authenticated((root, args, ctx) => ctx.currentUser),
-    getPins: async () => {
+    getPins: () => {
       return Pin.find({}).populate('author').populate('comments.author').exec()
     }
   },
