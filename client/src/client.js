@@ -9,7 +9,6 @@ export const useClient = () => {
   const [idToken, setIdToken] = useState('')
 
   useEffect(() => {
-    console.log('useEffect 1')
     const token = window.gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().id_token
     setIdToken(token)
   }, [])

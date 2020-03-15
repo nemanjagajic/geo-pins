@@ -19,8 +19,8 @@ const authenticated = next => (root, args, ctx, info) => {
 module.exports = {
   Query: {
     me: authenticated((root, args, ctx) => ctx.currentUser),
-    getPins: () => {
-      return Pin.find({}).populate('author').populate('comments.author')
+    getPins: async () => {
+      return Pin.find({}).populate('author').populate('comments.author').exec()
     }
   },
   Mutation: {
@@ -30,6 +30,9 @@ module.exports = {
         author: ctx.currentUser._id
       }).save()
       return Pin.populate(newPin, 'author')
+    }),
+    deletePin: authenticated((root, args) => {
+      return Pin.findOneAndDelete({ _id: args.pinId }).exec()
     })
   }
 }
