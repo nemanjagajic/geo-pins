@@ -25,6 +25,11 @@ const Login = ({ classes }) => {
     }
   }
 
+  const onFailure = err => {
+    console.log(err)
+    dispatch({ type: 'IS_LOGGED_IN', payload: false })
+  }
+
   return (
     <div className={classes.root}>
       <Typography
@@ -38,7 +43,7 @@ const Login = ({ classes }) => {
       </Typography>
       <GoogleLogin
         onSuccess={onSuccess}
-        onFailure={err => console.log(err)}
+        onFailure={onFailure}
         clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
         isSignedIn={true}
         buttonText={'Login with Google'}
